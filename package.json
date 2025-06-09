@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "deploy": "ng build --base-href=https://khanfaizal813.github.io/pokemon-search-app/ && npx angular-cli-ghpages --dir=dist/pokemon-search-app"
   },
   "dependencies": {
     "@angular/animations": "^19.2.0",
