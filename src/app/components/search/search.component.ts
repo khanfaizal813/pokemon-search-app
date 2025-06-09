@@ -76,6 +76,7 @@ import { EncounterLocation, Pokemon } from '../../models/pokemon.interface';
               *ngFor="let pokemon of suggestions; let i = index; trackBy: trackByName"
               (click)="selectPokemon(pokemon)"
               (mouseenter)="selectedIndex = i"
+              (mousedown)="selectPokemon(pokemon); $event.preventDefault()"
               [class]="getSuggestionClasses(i)"
               class="px-4 py-3 cursor-pointer transition-colors duration-150 border-b border-gray-100 last:border-b-0"
             >
@@ -142,8 +143,8 @@ import { EncounterLocation, Pokemon } from '../../models/pokemon.interface';
 export class SearchComponent implements OnInit, OnDestroy {
   @ViewChild('searchInput') searchInput!: ElementRef<HTMLInputElement>;
 
-  private destroy$ = new Subject<void>();
-  private searchSubject = new Subject<string>();
+  private readonly destroy$ = new Subject<void>();
+  private readonly searchSubject = new Subject<string>();
 
   searchQuery = '';
   suggestions: Pokemon[] = [];
@@ -156,9 +157,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   popularPokemon = ['pikachu', 'charizard', 'bulbasaur', 'squirtle', 'mewtwo', 'mew'];
 
   constructor(
-    private pokemonService: PokemonService,
-    private stateService: StateService,
-    private router: Router
+    private readonly pokemonService: PokemonService,
+    private readonly stateService: StateService,
+    private readonly router: Router
   ) { }
 
   ngOnInit(): void {
