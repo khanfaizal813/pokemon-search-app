@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, of } from 'rxjs';
 import { catchError, map, retry, delay } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 import {
   Pokemon,
   PokemonListResponse,
@@ -13,7 +14,7 @@ import {
   providedIn: 'root'
 })
 export class PokemonService {
-  private readonly BASE_URL = 'https://pokeapi.co/api/v2';
+  private readonly BASE_URL = environment.pokeApiUrl;
   private pokemonCache: Pokemon[] = [];
   private readonly encounterCache = new Map<string, EncounterLocation[]>();
 

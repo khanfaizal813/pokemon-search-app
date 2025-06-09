@@ -102,7 +102,7 @@ import { EncounterLocation, SearchState } from '../../models/pokemon.interface';
                   </span>
                 </div>
 
-                <div *ngIf="versionDetail.encounter_details.length > 0" class="text-xs text-gray-500 ml-4">
+                <div *ngIf="versionDetail.encounter_details.length > 0" class="text-xs text-gray-500">
                   <div *ngFor="let detail of versionDetail.encounter_details.slice(0, 1)">
                     Level {{ detail.min_level }}-{{ detail.max_level }} •
                     <span class="capitalize">{{ formatMethodName(detail.method.name) }}</span>
